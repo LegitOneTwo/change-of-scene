@@ -144,8 +144,7 @@ body {
     .nav-links {
         display: none;
         position: fixed; top: var(--navbar-height); left: 0; right: 0; bottom: 0;
-        background: rgba(17, 17, 27, 0.97);
-        backdrop-filter: blur(16px);
+        background: #11111b;
         flex-direction: column;
         padding: 1.5rem; gap: 0.25rem;
         z-index: 999;
