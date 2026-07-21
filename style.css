@@ -153,6 +153,12 @@ body {
     .nav-open .nav-links { display: flex; }
     .nav-link { font-size: 1.1rem; padding: 0.75rem 1rem; }
     .nav-inner { gap: 0.75rem; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .hero-actions .btn { width: 100%; max-width: 280px; justify-content: center; }
+    .testimony-card-header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    .testimony-card .testimony-rating { margin-left: 0; }
+    .archive-year-header { font-size: 0.85rem; flex-wrap: wrap; gap: 0.3rem; }
+    .archive-year-header span { flex: 1; min-width: 200px; }
 }
 
 /* ================================================================
@@ -254,13 +260,6 @@ body {
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(8px); }
-}
-
-@media (max-width: 700px) {
-    .hero-title { font-size: 1.8rem; }
-    .hero { min-height: 80vh; padding: 2rem 1rem; }
-    .hero-sm { min-height: auto; padding: 3rem 1rem 2rem; }
-    .hero-sm .hero-title { font-size: 1.5rem; }
 }
 
 /* Small hero for sub-pages */
@@ -630,15 +629,6 @@ body {
 /* ================================================================
    RESPONSIVE
    ================================================================ */
-@media (max-width: 860px) {
-    .hero-actions { flex-direction: column; align-items: center; }
-    .hero-actions .btn { width: 100%; max-width: 280px; justify-content: center; }
-    .testimony-card-header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-    .testimony-card .testimony-rating { margin-left: 0; }
-    .archive-year-header { font-size: 0.85rem; flex-wrap: wrap; gap: 0.3rem; }
-    .archive-year-header span { flex: 1; min-width: 200px; }
-}
-
 @media (max-width: 760px) {
     html { font-size: 15px; }
     body { padding-top: var(--navbar-height); }
