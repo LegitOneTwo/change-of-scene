@@ -148,7 +148,7 @@ body {
         background: #11111b !important;
         flex-direction: column;
         padding: 5rem 1.5rem 1.5rem; gap: 0.25rem;
-        z-index: 1000;
+        z-index: 1001;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
