@@ -6,15 +6,6 @@
     const currentLang = 'ru';
     let collapsedYears = {};
 
-    // Hamburger toggle
-    document.querySelector('.hamburger').addEventListener('click', () => {
-        document.body.classList.toggle('nav-open');
-    });
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => document.body.classList.remove('nav-open'));
-    });
-
     // ==================== HELPERS ====================
     function renderMenuSection(title, items, isCompact) {
         if (!items || items.length === 0) return '';
