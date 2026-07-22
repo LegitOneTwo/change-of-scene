@@ -92,7 +92,14 @@
         const t = translations[currentLang];
         const links = document.querySelectorAll('.nav-link');
         const keys = ['navHome', 'navFounder', 'navMenu', 'navArchive', 'navTestimonies', 'navAbout'];
-        links.forEach((link, i) => { if (keys[i]) link.textContent = t[keys[i]]; });
+        const icons = ['🏠', '👤', '📜', '📚', '💬', 'ℹ️'];
+        const mobile = window.innerWidth <= 860;
+        links.forEach((link, i) => {
+            if (keys[i]) {
+                link.textContent = mobile ? icons[i] : t[keys[i]];
+                link.setAttribute('aria-label', t[keys[i]]);
+            }
+        });
 
         const badge = document.querySelector('.hero-badge');
         const desc = document.querySelector('.hero-desc');
