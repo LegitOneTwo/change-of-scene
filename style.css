@@ -141,9 +141,13 @@ body {
     .nav-links::-webkit-scrollbar { display: none; }
     .nav-link {
         white-space: nowrap;
-        font-size: 1rem;
-        padding: 0.35rem 0.4rem;
+        font-size: 0;
+        padding: 0.35rem 0.45rem;
         flex-shrink: 0;
+    }
+    .nav-link::before {
+        content: attr(data-icon);
+        font-size: 1.15rem;
     }
     .nav-actions { flex-shrink: 0; gap: 0.25rem; }
 }

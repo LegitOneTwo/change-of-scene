@@ -93,10 +93,11 @@
         const links = document.querySelectorAll('.nav-link');
         const keys = ['navHome', 'navFounder', 'navMenu', 'navArchive', 'navTestimonies', 'navAbout'];
         const icons = ['🏠', '👤', '📜', '📚', '💬', 'ℹ️'];
-        const mobile = window.innerWidth <= 860;
         links.forEach((link, i) => {
             if (keys[i]) {
-                link.textContent = mobile ? icons[i] : t[keys[i]];
+                link.setAttribute('data-text', t[keys[i]]);
+                link.setAttribute('data-icon', icons[i]);
+                link.textContent = t[keys[i]];
                 link.setAttribute('aria-label', t[keys[i]]);
             }
         });
