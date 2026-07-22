@@ -2,7 +2,7 @@
 // Three.js — drifting "^-^" text faces
 
 (function () {
-    const COUNT = 180;
+    const COUNT = 80;
     const COLORS = [0xcba6f7, 0xf5c2e7, 0x89b4fa, 0x94e2d5, 0xfab387, 0xf9e2af, 0xa6e3a1, 0xf38ba8];
 
     // --- Scene ---
