@@ -3,7 +3,7 @@
 
 (function () {
     const page = document.body.getAttribute('data-page');
-    const currentLang = 'ru';
+    const currentLang = (navigator.language || 'en').startsWith('ru') ? 'ru' : 'en';
     let collapsedYears = {};
 
     // ==================== HELPERS ====================
@@ -19,7 +19,7 @@
     }
 
     function renderArchiveSection() {
-        const archive = archiveData;
+        const archive = archiveData[currentLang];
         return `<div class="archive-grid">${archive.map(entry => {
             const isCollapsed = collapsedYears[entry.date] || false;
             return `<div class="archive-year-card ${isCollapsed ? 'collapsed' : ''}" data-year="${entry.date}"><div class="archive-year-header"><span>📜 ${entry.date} — ${entry.title}</span><span class="toggle-icon">▼</span></div><div class="archive-year-content"><div class="archive-entry-text">${entry.text}</div>${entry.quote ? `<div class="archive-quote">"${entry.quote}"</div>` : ''}<div style="margin-top:0.4rem"><span class="archive-tag">🏷️ ${entry.tag || 'Архив'}</span></div></div></div>`;
@@ -38,8 +38,8 @@
     }
 
     function renderTestimoniesSection() {
-        const testimonies = testimoniesData;
-        const t = translations;
+        const testimonies = testimoniesData[currentLang];
+        const t = translations[currentLang];
         return `<div class="testimonies-section">
             <div class="testimonies-note">📖 ${t.testimoniesNote}</div>
             <div class="testimonies-list">${testimonies.map(entry => {
@@ -52,12 +52,12 @@
 
     // ==================== PER-PAGE RENDERING ====================
     function updateFooter() {
-        document.getElementById('footerCopyright').innerHTML = translations.footerCopyright;
-        document.getElementById('footerBadge').innerHTML = translations.footerBadge;
+        document.getElementById('footerCopyright').innerHTML = translations[currentLang].footerCopyright;
+        document.getElementById('footerBadge').innerHTML = translations[currentLang].footerBadge;
     }
 
     function translateNavAndHero() {
-        const t = translations;
+        const t = translations[currentLang];
         const links = document.querySelectorAll('.nav-link');
         const keys = ['navHome', 'navFounder', 'navMenu', 'navArchive', 'navTestimonies', 'navAbout'];
         links.forEach((link, i) => { if (keys[i]) link.textContent = t[keys[i]]; });
@@ -87,11 +87,11 @@
     }
 
     function renderPage() {
-        const t = translations;
+        const t = translations[currentLang];
         updateFooter();
 
         if (page === 'menu') {
-            const menu = menuData;
+            const menu = menuData[currentLang];
             document.getElementById('pageContent').innerHTML = `
                 ${renderMenuSection(t.hotDrinks, menu.hot, false)}
                 ${renderMenuSection(t.coldDrinks, menu.cold, true)}
