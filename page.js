@@ -1,10 +1,42 @@
 // ==================== SHARED PAGE LOGIC ====================
-// Per-page content rendering
+// Per-page content rendering + language toggle
 
 (function () {
     const page = document.body.getAttribute('data-page');
-    const currentLang = (navigator.language || 'en').startsWith('ru') ? 'ru' : 'en';
+    const systemLang = (navigator.language || 'en').startsWith('ru') ? 'ru' : 'en';
+    const savedLang = localStorage.getItem('cafe-lang');
+    let currentLang = savedLang || systemLang;
     let collapsedYears = {};
+
+    // Language notification
+    if (!savedLang && systemLang !== 'en') {
+        const note = document.createElement('div');
+        note.className = 'lang-notify';
+        note.innerHTML = '🌐 This site is also available <a href="#" id="switchToEn">in English</a>. <button class="lang-notify-close">&times;</button>';
+        document.body.appendChild(note);
+        note.querySelector('#switchToEn').addEventListener('click', (e) => {
+            e.preventDefault();
+            setLang('en');
+            note.remove();
+        });
+        note.querySelector('.lang-notify-close').addEventListener('click', () => note.remove());
+        setTimeout(() => { if (note.parentNode) note.remove(); }, 12000);
+    }
+
+    function setLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('cafe-lang', lang);
+        document.getElementById('langToggle').title = lang === 'ru' ? 'English' : 'Русский';
+        translateNavAndHero();
+        renderPage();
+    }
+
+    function toggleLang() {
+        setLang(currentLang === 'ru' ? 'en' : 'ru');
+    }
+
+    document.getElementById('langToggle').addEventListener('click', toggleLang);
+    document.getElementById('langToggle').title = currentLang === 'ru' ? 'English' : 'Русский';
 
     // ==================== HELPERS ====================
     function renderMenuSection(title, items, isCompact) {

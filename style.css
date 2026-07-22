@@ -151,6 +151,38 @@ body {
     .nav-actions { flex-shrink: 0; gap: 0.25rem; }
 }
 
+/* Language notification banner */
+.lang-notify {
+    position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+    background: rgba(30, 30, 46, 0.95);
+    border: 1px solid var(--ctp-surface1);
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    color: var(--ctp-subtext0);
+    z-index: 5000;
+    box-shadow: var(--elevation-3);
+    display: flex; align-items: center; gap: 0.5rem;
+    animation: slideUp 0.4s ease-out;
+    max-width: 90vw;
+}
+.lang-notify a {
+    color: var(--ctp-mauve);
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}
+.lang-notify-close {
+    background: none; border: none;
+    color: var(--ctp-overlay1);
+    font-size: 1.1rem; cursor: pointer;
+    padding: 0 0.2rem; line-height: 1;
+}
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
 /* ================================================================
    HERO SECTION
    ================================================================ */
