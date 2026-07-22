@@ -123,34 +123,32 @@ body {
 .icon-btn:hover { color: var(--ctp-text); background: rgba(255,255,255,0.08); }
 
 @media (max-width: 860px) {
-    .navbar { position: relative; }
-    body { padding-top: 0; }
+    body { padding-top: 80px; }
     .nav-inner {
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.4rem;
         height: auto;
-        padding: 0.6rem 1rem;
+        padding: 0.4rem 0.75rem;
+        max-width: 100%;
     }
-    .nav-brand { order: 1; }
+    .nav-brand .brand-text { display: none; }
+    .nav-brand { font-size: 1.1rem; flex-shrink: 0; }
     .nav-links {
-        order: 3;
         display: flex;
-        flex: 1 1 100%;
+        flex: 1;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        gap: 0.3rem;
-        padding-bottom: 0.3rem;
+        gap: 0.2rem;
         mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
         -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
     }
     .nav-links::-webkit-scrollbar { display: none; }
     .nav-link {
         white-space: nowrap;
-        font-size: 0.75rem;
-        padding: 0.35rem 0.65rem;
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
         flex-shrink: 0;
     }
-    .nav-actions { order: 2; margin-left: auto; }
+    .nav-actions { flex-shrink: 0; gap: 0.25rem; }
 }
 
 /* ================================================================
