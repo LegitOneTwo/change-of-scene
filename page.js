@@ -92,12 +92,10 @@
         const t = translations[currentLang];
         const links = document.querySelectorAll('.nav-link');
         const keys = ['navHome', 'navFounder', 'navMenu', 'navArchive', 'navTestimonies', 'navAbout'];
-        const icons = ['🏠', '👤', '📜', '📚', '💬', 'ℹ️'];
         links.forEach((link, i) => {
             if (keys[i]) {
-                link.setAttribute('data-text', t[keys[i]]);
-                link.setAttribute('data-icon', icons[i]);
-                link.textContent = t[keys[i]];
+                const label = link.querySelector('.nav-label');
+                if (label) label.textContent = t[keys[i]];
                 link.setAttribute('aria-label', t[keys[i]]);
             }
         });
