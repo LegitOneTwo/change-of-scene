@@ -1,2 +1,5 @@
 .DS_Store
 Thumbs.db
+add_item.py
+add_item.bat
+__pycache__/
