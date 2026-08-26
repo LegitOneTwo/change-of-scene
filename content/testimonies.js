@@ -210,6 +210,12 @@ const testimoniesData = {
                 "title": "Translator",
                 "rating": 10,
                 "text": "I was drinking my coffee, and then suddenly I was offered a high-paying job. Now this site supports Russian language. I am happier than ever."
+        },
+        {
+                "id": 35,
+                "title": "Portal Enthusiast",
+                "rating": 10,
+                "text": "A guy brought me to the café. He said it was unusual — new visitors are always welcome here. When I came for the first time, I saw how the café changed, how the music changed. As if I had stepped into a strange, magical place. Once, on my birthday, something unexpected happened: a waiter brought me a cake with candles and a single drink. The music filled me with a light, warm, yet heart-wrenching atmosphere. My emotions burst out; I felt I was about to cry from joy! This place filled me with both the happiest memories and the saddest ones. I was glad to be here, in this little café.<br>— <strong>Core Portal - Lisa Portman</strong>"
         }
 ],
     ru: [
@@ -247,6 +253,7 @@ const testimoniesData = {
         { id: 31, title: "Курьер", rating: 8, text: "GPS не мог найти это место. Кружил 40 минут. Потом внезапно - вот оно, там, где я уже проезжал трижды. Сотрудники дали чаевые монетами неизвестной мне валюты. Лучшая доставка в карьере.<br>- <strong>М. Райдез</strong>" },
         { id: 32, title: "Терапевт", rating: 10, text: "Я отправляю сюда самых сложных пациентов. Не как терапию - просто как предложение. Каждый вернулся изменившимся. Спокойнее. Собраннее. Один сказал, что кафе 'слушало лучше, чем я когда-либо'. Я не обижен. Мне любопытно.<br>- <strong>Др. Ф. Харт</strong>" },
         { id: 33, title: "Ребёнок", rating: 10, text: "Меня привела мама. Горячий шоколад был с маршмеллоу в форме звёзд. Звёзды двигались. Добрый дядя играл на пианино, и ноты выглядели как летающие огоньки. Я рассказал учительнице, она сказала, что у меня 'живое воображение'. Я знаю, что я видел.<br>- <strong>Лёва, 8 лет</strong>" },
-        { id: 34, title: "Переводчик", rating: 10, text: "Пил кофе в этом кафе, и вдруг мне предложили высокооплачиваемую работу. Теперь этот сайт поддерживает английский язык. Счастлив, как никогда." }
+        { id: 34, title: "Переводчик", rating: 10, text: "Пил кофе в этом кафе, и вдруг мне предложили высокооплачиваемую работу. Теперь этот сайт поддерживает английский язык. Счастлив, как никогда." },
+        { id: 35, title: "Любитель порталов", rating: 10, text: "Один парень привёл меня к кафе. Он сказал, что оно необычное — тут всегда рады новым посетителям. Когда я пришла впервые, я увидела, как менялось кафе, менялась музыка. Как будто я попала в странное, волшебное место. Однажды, на мой день рождения, произошло нечто неожиданное: официант принёс мне торт со свечами и один напиток. Музыка наполнила меня лёгкой, тёплой, но в то же время душераздирающей атмосферой. Мои эмоции вырвались наружу; я чувствовала, что вот-вот расплачусь от радости! Это место наполняло и радостными воспоминаниями, и самыми печальными. Я была рада оказаться здесь, в этой кафешке.<br>- <strong>Core Portal - Lisa Portman</strong>" }
 ]
 };
