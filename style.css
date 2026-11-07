@@ -657,6 +657,149 @@ body {
 .cafe-content { animation: fadeIn 0.35s ease-out; }
 
 /* ================================================================
+   LIVE CAFÉ STATE
+   ================================================================ */
+.state-panel {
+    background: linear-gradient(135deg, var(--ctp-surface0), rgba(203, 166, 247, 0.06));
+    border: 1px solid rgba(203, 166, 247, 0.18);
+    border-radius: 14px;
+    padding: 0.9rem 1.1rem;
+    margin: 0.5rem 0 1.25rem;
+    box-shadow: var(--elevation-2);
+}
+.state-panel-head {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-family: 'VT323', monospace;
+    font-size: 0.85rem; letter-spacing: 1px;
+    color: var(--ctp-mauve);
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+}
+.state-panel-icon { font-size: 1rem; }
+.state-panel-time {
+    margin-left: auto;
+    color: var(--ctp-overlay1);
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+.state-grid {
+    display: grid; gap: 0.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.state-item {
+    display: flex; gap: 0.6rem; align-items: flex-start;
+    background: rgba(17, 17, 27, 0.35);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+}
+.state-icon { font-size: 1.3rem; line-height: 1.2; }
+.state-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.state-label {
+    font-size: 0.6rem; letter-spacing: 0.6px; text-transform: uppercase;
+    color: var(--ctp-overlay1);
+}
+.state-body strong {
+    color: var(--ctp-yellow); font-size: 0.82rem; font-weight: 700;
+}
+.state-body p { margin: 0; font-size: 0.7rem; color: var(--ctp-subtext1); line-height: 1.45; }
+
+/* ================================================================
+   MENU TOOLS — search + counter
+   ================================================================ */
+.menu-tools {
+    display: flex; align-items: center; gap: 0.6rem;
+    margin: 0.75rem 0 0.5rem;
+    flex-wrap: wrap;
+}
+.menu-search {
+    flex: 1; min-width: 200px;
+    background: var(--ctp-surface0);
+    border: 1px solid var(--ctp-surface1);
+    border-radius: 100px;
+    padding: 0.45rem 0.9rem;
+    color: var(--ctp-text);
+    font-family: inherit;
+    font-size: 0.8rem;
+}
+.menu-search::placeholder { color: var(--ctp-overlay1); }
+.menu-search:focus {
+    outline: none;
+    border-color: var(--ctp-mauve);
+    box-shadow: 0 0 0 3px rgba(203, 166, 247, 0.15);
+}
+.menu-count {
+    font-family: 'VT323', monospace;
+    font-size: 0.8rem;
+    color: var(--ctp-overlay2);
+    white-space: nowrap;
+}
+.menu-empty {
+    background: var(--ctp-surface0);
+    border-left: 3px solid var(--ctp-peach);
+    border-radius: 0 10px 10px 0;
+    padding: 0.7rem 0.9rem;
+    margin: 0.5rem 0 1rem;
+    font-size: 0.75rem;
+    color: var(--ctp-subtext0);
+}
+.menu-section[hidden] { display: none; }
+.menu-card[hidden] { display: none; }
+
+/* ================================================================
+   ARCHIVE TOOLS
+   ================================================================ */
+.archive-tools {
+    display: flex; gap: 0.5rem;
+    margin: 0.75rem 0 0.25rem;
+    flex-wrap: wrap;
+}
+.tool-btn {
+    background: var(--ctp-surface0);
+    border: 1px solid var(--ctp-surface1);
+    color: var(--ctp-subtext0);
+    border-radius: 100px;
+    padding: 0.35rem 0.85rem;
+    font-family: 'VT323', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.tool-btn:hover {
+    border-color: var(--ctp-mauve);
+    color: var(--ctp-mauve);
+}
+
+/* ================================================================
+   ACCESSIBILITY — focus + reduced motion
+   ================================================================ */
+:focus-visible {
+    outline: 2px solid var(--ctp-mauve);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+.archive-year-header {
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-family: 'VT323', monospace;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.archive-year-header:focus-visible {
+    outline: 2px solid var(--ctp-mauve);
+    outline-offset: -2px;
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ================================================================
    RESPONSIVE
    ================================================================ */
 @media (max-width: 760px) {
