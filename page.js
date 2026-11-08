@@ -4,7 +4,21 @@
 (function () {
     const page = document.body.getAttribute('data-page');
     const systemLang = (navigator.language || 'en').startsWith('ru') ? 'ru' : 'en';
-    const savedLang = localStorage.getItem('cafe-lang');
+    // localStorage is an external boundary: access can be denied and the stored
+    // value can be stale. Treat it as a hint, never as a trusted config source.
+    function storedLang() {
+        try {
+            const v = localStorage.getItem('cafe-lang');
+            return v === 'ru' || v === 'en' ? v : null;
+        } catch (e) {
+            return null;
+        }
+    }
+    function storeLang(lang) {
+        try { localStorage.setItem('cafe-lang', lang); } catch (e) { /* unavailable */ }
+    }
+
+    const savedLang = storedLang();
     let currentLang = savedLang || systemLang;
     let collapsedYears = {};
     let menuQuery = '';
@@ -13,8 +27,9 @@
     if (!savedLang && systemLang !== 'en') {
         const note = document.createElement('div');
         note.className = 'lang-notify';
-        note.innerHTML = '🌐 This site is also available <a href="#" id="switchToEn">in English</a>. <button class="lang-notify-close">&times;</button>';
-        document.body.appendChild(note);
+        note.innerHTML = '<span>🌐 This site is also available <a href="#" id="switchToEn">in English</a>.</span> <button class="lang-notify-close">&times;</button>';
+        // In flow, above the content, so it can never cover controls.
+        document.body.prepend(note);
         note.querySelector('#switchToEn').addEventListener('click', (e) => {
             e.preventDefault();
             setLang('en');
@@ -42,7 +57,10 @@
 
     function setLang(lang) {
         currentLang = lang;
-        localStorage.setItem('cafe-lang', lang);
+        storeLang(lang);
+        // Menu text changes with the language; a query typed in the previous
+        // language would otherwise match nothing after the re-render.
+        menuQuery = '';
         document.getElementById('langToggle').title = lang === 'ru' ? 'English' : 'Русский';
         translateNavAndHero();
         renderPage();
@@ -88,7 +106,7 @@
                 <div class="archive-year-content" id="${entryId}">
                     <div class="archive-entry-text">${entry.text}</div>
                     ${entry.quote ? `<div class="archive-quote">"${entry.quote}"</div>` : ''}
-                    <div style="margin-top:0.4rem"><span class="archive-tag">🏷️ ${entry.tag || 'Архив'}</span></div>
+                    ${entry.tag ? `<div style="margin-top:0.4rem"><span class="archive-tag">🏷️ ${entry.tag}</span></div>` : ''}
                 </div>
             </article>`;
         }).join('')}</div>`;
@@ -157,7 +175,7 @@
         const s = sceneData[currentLang];
         const cycle = s.cycles[currentCycleKey(now)];
         const scene = s.scenes[currentSceneKey(now)];
-        const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const time = now.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
         return `<div class="state-panel">
             <div class="state-panel-head">
                 <span class="state-panel-icon">✦</span>
@@ -373,4 +391,13 @@
 
     translateNavAndHero();
     renderPage();
+
+    // The panel reports the current hour; refresh it so a tab left open does
+    // not freeze at the load-time scene. Only the panel is replaced.
+    if (page === 'home') {
+        setInterval(() => {
+            const panel = document.querySelector('.state-panel');
+            if (panel) panel.outerHTML = renderStatePanel();
+        }, 60000);
+    }
 })();
