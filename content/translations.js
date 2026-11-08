@@ -1,7 +1,7 @@
 // ==================== BILINGUAL DATA ====================
 const translations = {
     en: {
-        "title": "☁️ CHANGE OF SCENE ☕",
+        "title": "✦ Change Of Scene • liminal café",
         "subtitle": "café on the edge of reality",
         "welcome": "Welcome to <strong>Change Of Scene</strong> — an establishment located in a <strong>controlled liminal space</strong> (sector L-ρ, waiting level).<br>People come here seeking <em>transition</em>, <em>a pause between worlds</em>, or simply a great espresso with hints of nostalgia.",
         "conceptTitle": "🌌 concept & atmosphere",
@@ -112,7 +112,7 @@ const translations = {
         "archiveCollapseAll": "close all files"
 },
     ru: {
-        title: "☁️ CHANGE OF SCENE ☕",
+        title: "✦ Change Of Scene • лиминальное кафе",
         subtitle: "кафе на границе реальности",
         welcome: "Добро пожаловать в <strong>Change Of Scene</strong> - заведение, расположенное в <strong>контролируемом лиминальном пространстве</strong> (сектор L-ρ, уровень ожидания).<br>Сюда приходят те, кто ищет <em>переход</em>, <em>паузу между мирами</em> или просто отличный эспрессо с нотками ностальгии.",
         conceptTitle: "🌌 концепция & атмосфера",

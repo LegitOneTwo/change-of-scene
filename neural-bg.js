@@ -2,6 +2,12 @@
 // Three.js — drifting "^-^" text faces
 
 (function () {
+    // Three.js is loaded from a CDN and WebGL can be unavailable. Degrade to
+    // the plain dark background rather than throwing in the page.
+    if (typeof THREE === 'undefined') return;
+    const reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const COUNT = 80;
     const COLORS = [0xcba6f7, 0xf5c2e7, 0x89b4fa, 0x94e2d5, 0xfab387, 0xf9e2af, 0xa6e3a1, 0xf38ba8];
 
@@ -10,7 +16,12 @@
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.z = 8;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    let renderer;
+    try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    } catch (e) {
+        return;
+    }
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x11111b, 1);
@@ -167,5 +178,9 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    animate();
+    if (reduceMotion) {
+        renderer.render(scene, camera);
+    } else {
+        animate();
+    }
 })();
